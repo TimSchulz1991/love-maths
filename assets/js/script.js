@@ -47,9 +47,11 @@ const checkAnswer = () => {
     let isCorrect = userAnswer === calculatedAnswer[0];
 
     if (isCorrect) {
-        alert("You got it right! :)")
+        alert("You got it right! :)");
+        incrementScore();
     } else {
-        alert(`Awww...you answered ${userAnswer}, but the correct answer was ${calculatedAnswer[0]}`)
+        alert(`Awww...you answered ${userAnswer}, but the correct answer was ${calculatedAnswer[0]}`);
+        incrementWrongAnswer();
     }
 
     runGame(calculatedAnswer[1])
@@ -64,21 +66,28 @@ const calculateCorrectAnswer = () => {
     let operandTwo = parseInt(document.getElementById('operand-two').textContent);
     let operator = document.getElementById('operator').textContent;
 
-if (operator === "+") {
-    return [operandOne + operandTwo, "addition"];
-} else {
-    alert(`Unimplmented operator: ${operator}`);
-    throw `Unimplmented operator: ${operator}. Aborting!`;
+    if (operator === "+") {
+        return [operandOne + operandTwo, "addition"];
+    } else {
+        alert(`Unimplmented operator: ${operator}`);
+        throw `Unimplmented operator: ${operator}. Aborting!`;
+    }
 }
 
-}
-
+/**
+ * Gets the current score from the DOM and increments it by one
+ */
 const incrementScore = () => {
-    
+    let oldScore = parseInt(document.getElementById('score').textContent);
+    document.getElementById('score').textContent = ++oldScore;
 }
 
+/**
+ * Gets the current incorrect from the DOM and increments it by one
+ */
 const incrementWrongAnswer = () => {
-    
+    let oldIncorrect = parseInt(document.getElementById('incorrect').textContent);
+    document.getElementById('incorrect').textContent = ++oldIncorrect;
 }
 
 const displayAdditionQuestion = (operandOne, operandTwo) => {
