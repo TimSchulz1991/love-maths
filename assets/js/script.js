@@ -32,6 +32,10 @@ const runGame = (gameType) => {
         displayAdditionQuestion(num1, num2)
     } else if (gameType === "multiply") {
         displayMultiplyQuestion(num1, num2)
+    } else if (gameType === "subtract") {
+        if (num1 > num2) {
+            displaySubtractQuestion(num1, num2)
+        } else {displaySubtractQuestion(num2, num1)}
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`
@@ -72,6 +76,8 @@ const calculateCorrectAnswer = () => {
         return [operandOne + operandTwo, "addition"];
     } else if (operator === "x") {
         return [operandOne * operandTwo, "multiply"];
+    } else if (operator === "-") {
+        return [operandOne - operandTwo, "subtract"];
     } else {
         alert(`Unimplmented operator: ${operator}`);
         throw `Unimplmented operator: ${operator}. Aborting!`;
@@ -100,8 +106,10 @@ const displayAdditionQuestion = (operandOne, operandTwo) => {
     document.getElementById('operator').textContent = "+";
 }
 
-const displaySubtractQuestion = () => {
-    
+const displaySubtractQuestion = (operandOne, operandTwo) => {
+    document.getElementById('operand-one').textContent = operandOne;
+    document.getElementById('operand-two').textContent = operandTwo;
+    document.getElementById('operator').textContent = "-";
 }
 
 const displayMultiplyQuestion = (operandOne, operandTwo) => {
