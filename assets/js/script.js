@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         })
     }
-
+// Let the user press Enter on the input box
 document.getElementById('answer-box').addEventListener('keydown', function(event) {
     if (event.key === "Enter") {
         checkAnswer();
@@ -31,6 +31,7 @@ document.getElementById('answer-box').addEventListener('keydown', function(event
 
 const runGame = (gameType) => {
 
+    // Clear the input field everytime an answer was checked and set the focus back into the field
     document.getElementById('answer-box').value = "";
     document.getElementById('answer-box').focus();
 
