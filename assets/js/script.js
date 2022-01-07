@@ -30,6 +30,8 @@ const runGame = (gameType) => {
 
     if (gameType === "addition") {
         displayAdditionQuestion(num1, num2)
+    } else if (gameType === "multiply") {
+        displayMultiplyQuestion(num1, num2)
     } else {
         alert(`Unknown game type: ${gameType}`);
         throw `Unknown game type: ${gameType}. Aborting!`
@@ -68,6 +70,8 @@ const calculateCorrectAnswer = () => {
 
     if (operator === "+") {
         return [operandOne + operandTwo, "addition"];
+    } else if (operator === "x") {
+        return [operandOne * operandTwo, "multiply"];
     } else {
         alert(`Unimplmented operator: ${operator}`);
         throw `Unimplmented operator: ${operator}. Aborting!`;
@@ -100,6 +104,8 @@ const displaySubtractQuestion = () => {
     
 }
 
-const displayMultiplyQuestion = () => {
-    
+const displayMultiplyQuestion = (operandOne, operandTwo) => {
+    document.getElementById('operand-one').textContent = operandOne;
+    document.getElementById('operand-two').textContent = operandTwo;
+    document.getElementById('operator').textContent = "x";
 }
