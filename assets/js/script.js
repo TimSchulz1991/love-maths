@@ -38,6 +38,7 @@ const runGame = (gameType) => {
     // Create two random numbers between 1-25
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
+    let num3 = Math.floor(Math.random() * 24) + 2; // get a random number for division between 2 and 25
 
     if (gameType === "addition") {
         displayAdditionQuestion(num1, num2)
@@ -47,9 +48,15 @@ const runGame = (gameType) => {
         if (num1 > num2) {
             displaySubtractQuestion(num1, num2)
         } else {displaySubtractQuestion(num2, num1)}
+    } else if (gameType === "division") {
+        if (num1 === 1) {
+            displayDivisionQuestion(num1*num2*num3,num2) // make sure that the first number is larger than the second number
+        } else {
+            displayDivisionQuestion((num1*num2),num2)
+        } 
     } else {
         alert(`Unknown game type: ${gameType}`);
-        throw `Unknown game type: ${gameType}. Aborting!`
+        throw `Unknown game type: ${gameType}. Aborting!`;
     }
 }
 
@@ -89,6 +96,8 @@ const calculateCorrectAnswer = () => {
         return [operandOne * operandTwo, "multiply"];
     } else if (operator === "-") {
         return [operandOne - operandTwo, "subtract"];
+    } else if (operator === "/") {
+        return [operandOne / operandTwo, "division"];
     } else {
         alert(`Unimplmented operator: ${operator}`);
         throw `Unimplmented operator: ${operator}. Aborting!`;
@@ -127,4 +136,10 @@ const displayMultiplyQuestion = (operandOne, operandTwo) => {
     document.getElementById('operand-one').textContent = operandOne;
     document.getElementById('operand-two').textContent = operandTwo;
     document.getElementById('operator').textContent = "x";
+}
+
+const displayDivisionQuestion = (operandOne, operandTwo) => {
+    document.getElementById('operand-one').textContent = operandOne;
+    document.getElementById('operand-two').textContent = operandTwo;
+    document.getElementById('operator').textContent = "/";
 }
