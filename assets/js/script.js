@@ -15,11 +15,11 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     }
 // Let the user press Enter on the input box
-document.getElementById('answer-box').addEventListener('keydown', function(event) {
-    if (event.key === "Enter") {
-        checkAnswer();
-    }
-})
+    document.getElementById('answer-box').addEventListener('keydown', function(event) {
+        if (event.key === "Enter") {
+         checkAnswer();
+        }
+    })
 
     runGame("addition")
 })
